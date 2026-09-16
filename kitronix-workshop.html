@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Kitronix - Product Gallery & Workshop</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700;1,900&family=Barlow:wght@300;400;500;600;700&family=Share+Tech+Mono&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="kit_styles.css" rel="stylesheet"/>
+    <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('kitronix-theme') || 'light');</script>
+
+    <style>
+    /* ── REFERENCE STYLES (scoped to workshop page) ── */
+    :root {
+      --y:#F5C400;--yd:#C89A00;--ylight:#FFFBE6;
+      --bk:#0F0F0F;--bk2:#1a1a1a;
+      --wh:#FFFFFF;--off:#FAFAF7;--light:#F5F4EF;--light2:#EEEDE8;
+      --ref-text:#1A1A1A;--text2:#4A4A4A;--muted:#888;--border:#E2E0D8;
+      --bg-main: #f5f5f5;
+      --surface-light: #ffffff;
+      --text-charcoal: #1a1a1a;
+      --text-dark: #555555;
+      --tech-border: rgba(0, 0, 0, 0.1);
+      --tech-grey-light: #f0f0f0;
+    }
+
+    /* ── Dark Theme Variables ── */
+    [data-theme="dark"] {
+      --bg-main: #0f0f0f;
+      --surface-light: #1a1a1a;
+      --text-charcoal: #e8e8e8;
+      --text-dark: #a0a0a0;
+      --tech-border: rgba(255, 255, 255, 0.1);
+      --tech-grey-light: #222222;
+      --ref-text: #e8e8e8;
+      --text2: #a0a0a0;
+      --border: rgba(255, 255, 255, 0.1);
+      --bk: #FFFFFF;
+      --wh: #0F0F0F;
+      --off: #1a1a1a;
+      --light: #242424;
+      --light2: #2a2a2a;
+    }
+
+    /* ── Dark Mode Component Overrides ── */
+    [data-theme="dark"] .hero {
+
+      background: #F5C400 !important;
+
+      color: var(--text-charcoal);
+    }
+    
+    [data-theme="dark"] .hero-eyebrow,
+    [data-theme="dark"] .hero-title,
+    [data-theme="dark"] .hero-tagline {
+      color: var(--text-charcoal);
+    }
+
+    [data-theme="dark"] .tiers-section {
+      background: var(--bg-main);
+    }
+
+    [data-theme="dark"] .tier-card {
+      background: var(--surface-light);
+      border-color: var(--tech-border);
+      color: var(--text-charcoal);
+    }
+
+    [data-theme="dark"] .tier-body {
+      background: var(--tech-grey-light);
+      color: var(--text-charcoal);
+    }
+
+    [data-theme="dark"] .tier-head {
+      background: var(--surface-light);
+      color: var(--text-charcoal);
+    }
+
+    [data-theme="dark"] .hw-section {
+      background: var(--bg-main);
+      color: var(--text-charcoal);
+    }
+
+    [data-theme="dark"] .hw-inner {
+      background: var(--bg-main);
+      color: var(--text-charcoal);
+    }
+
+    [data-theme="dark"] .hw-desc {
+      color: var(--text-dark);
+    }
+
+    [data-theme="dark"] .adv-grid {
+      background: var(--bg-main);
+      color: var(--text-charcoal);
+    }
+
+    [data-theme="dark"] .adv-box {
+      background: var(--surface-light);
+      border-color: var(--tech-border);
+      border-top-color: var(--y);
+      color: var(--text-charcoal);
+    }
+
+    [data-theme="dark"] .adv-desc {
+      color: var(--text-dark);
+    }
+
+    [data-theme="dark"] .p4-body {
+      background: var(--bg-main);
+      color: var(--text-charcoal);
+    }
+
+    [data-theme="dark"] .compare-table {
+      background: var(--bg-main);
+    }
+
+    [data-theme="dark"] .compare-table th {
+      background: var(--surface-light);
+      color: var(--text-charcoal);
+      border-bottom: 1px solid var(--tech-border);
+    }
+
+    [data-theme="dark"] .compare-table th:last-child {
+      color: var(--y);
+    }
+
+    [data-theme="dark"] .compare-table td {
+      background: var(--bg-main);
+      color: var(--text-charcoal);
+      border-bottom-color: var(--tech-border);
+    }
+
+    [data-theme="dark"] .compare-table td:last-child {
+      color: var(--y);
+    }
+
+    [data-theme="dark"] .log-table {
+      background: var(--surface-light);
+    }
+
+    [data-theme="dark"] .log-table tr {
+      border-bottom-color: var(--tech-border);
+    }
+
+    [data-theme="dark"] .log-table td {
+      background: var(--surface-light);
+      color: var(--text-charcoal);
+    }
+
+    [data-theme="dark"] .log-table td:first-child {
+      color: var(--y);
+      background: var(--surface-light);
+    }
+
+    [data-theme="dark"] .log-table tr:nth-child(odd) td {
+      background: var(--tech-grey-light);
+    }
+
+    [data-theme="dark"] .ref-section-title {
+      color: var(--text-charcoal);
+    }
+
+    [data-theme="dark"] .aud-card {
+      background: var(--surface-light);
+      border-top-color: var(--y);
+      color: var(--text-charcoal);
+    }
+
+    [data-theme="dark"] .aud-title {
+      color: var(--text-charcoal);
+    }
+
+    [data-theme="dark"] .aud-desc {
+      color: var(--text-dark);
+    }
+
+    [data-theme="dark"] .spec-table tr {
+      border-bottom-color: var(--tech-border);
+    }
+
+    [data-theme="dark"] .spec-table td:first-child {
+      color: var(--y);
+    }
+
+    [data-theme="dark"] .spec-table td:last-child {
+      color: var(--text-dark);
+    }
+
+    [data-theme="dark"] body {
+      background-color: var(--bg-main);
+      color: var(--text-charcoal);
+    }
+
+    /* Section topbars */
+    .sec-topbar{background:var(--bk);padding:11px 44px;display:flex;align-items:center;justify-content:space-between}
+    .sec-topbar-y{background:var(--y);padding:11px 44px;display:flex;align-items:center;justify-content:space-between}
+    .stb-title{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:900;letter-spacing:2px;text-transform:uppercase}
+    .stb-title.light{color:var(--wh)}
+    .stb-title.dark{color:var(--bk)}
+    .stb-right{font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:3px;margin-left:auto}
+    .stb-right.light{color:#555}
+    .stb-right.dark{color:rgba(255,255,255,.6)}
+
+    .ey{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:4px;color:var(--y);margin-bottom:8px;display:flex;align-items:center;gap:8px;text-transform:uppercase}
+    .ey::before{content:'';width:16px;height:2px;background:var(--y);display:block}
+    .ey.dark{color:var(--yd)}
+    .ey.dark::before{background:var(--yd)}
+
+    .ref-sec-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(36px,5.5vw,54px);font-weight:900;text-transform:uppercase;line-height:.9;margin-bottom:10px}
+    .ref-sec-title span{color:var(--y);font-style:italic}
+
+    /* ── HERO TITLE ── */
+    .hero-title .l2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,8vw,5rem);font-weight:900;letter-spacing:0.08em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .hero-title .l6{letter-spacing:0.32em;word-spacing:0.15em;white-space:nowrap;margin-left: 1%;}
+    
+    /* ── HERO INNER DESKTOP ── */
+    .hero-inner{display:flex;align-items:flex-start;justify-content:space-between;gap:40px;padding:0}
+    .hero-title{flex:1;display:flex;flex-direction:column;justify-content:flex-start}
+    .hero-logo{flex:1;display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-start}
+
+    /* ── HERO BACKGROUND ── */
+
+    .hero{background:#F5C400;color:var(--bk);padding:20px 44px 60px 44px}
+
+    .hero-eyebrow{color:var(--bk)}
+    .hero-title{color:var(--bk)}
+    .hero-tagline{color:var(--bk)}
+
+    /* ── HERO CTA BUTTONS ── */
+    .hero-cta-buttons{display:flex;gap:20px;justify-content:flex-start;margin-top:32px}
+    .hero-cta-btn{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:900;letter-spacing:2px;text-transform:uppercase;padding:14px 32px;border:none;border-radius:3px;text-decoration:none;cursor:pointer;display:inline-block;transition:all 0.3s ease;box-shadow:0 4px 12px rgba(0,0,0,0.1)}
+    .hero-contact-btn{background:var(--wh);color:var(--bk)}
+    .hero-contact-btn:hover{background:var(--y);color:var(--bk);transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,0.15)}
+    .hero-register-btn{background:var(--wh);color:var(--bk)}
+    .hero-register-btn:hover{background:var(--y);color:var(--bk);transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,0.15)}
+
+    /* ── HERO LOGO TEXT ── */
+    .hero-logo-text{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:900;letter-spacing:0.5px;text-transform:uppercase;color:#0F0F0F;line-height:1.2;margin-bottom:8px;text-align:right}
+
+    /* ── TIER CARDS ── */
+    .tiers-section{background:#fff}
+    .tiers-inner{padding:40px 44px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+
+    .tier-card{border-radius:6px;overflow:hidden;border:1px solid #e0e0e0;background:#fff;display:flex;flex-direction:column;transition:all 0.3s ease;cursor:pointer}
+    .tier-card:hover{transform:translateY(-8px);box-shadow:0 12px 24px rgba(0,0,0,0.15);border-color:#F5C400}
+    .tier-card:nth-child(1){border-top:3px solid #F5C400}
+    .tier-card:nth-child(2){border-top:3px solid #F5C400}
+    .tier-card:nth-child(3){border-top:3px solid #F5C400}
+    
+    .tier-head{padding:20px;display:flex;flex-direction:row;align-items:center;justify-content:space-between;background:#000;border:none;height:140px}
+    .tier-head.t3h{border-top:none}
+    .th-num{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:8px;color:var(--y)}
+    .tier-card:nth-child(1) .th-num{color:#F5C400}
+    .tier-card:nth-child(2) .th-num{color:#F5C400}
+    .tier-card:nth-child(3) .th-num{color:#F5C400}
+
+    .th-name{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;color:var(--y);text-transform:uppercase;letter-spacing:0.5px;line-height:1.2;margin-bottom:0}
+    .th-sub{font-size:12px;color:#999;margin-top:0;line-height:1.5;display:none}
+
+    [data-theme="dark"] .th-sub{color:rgba(255,255,255,.6)}
+    
+    .th-price{text-align:right;flex-shrink:0;margin:0}
+    .th-price .amount{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:900;line-height:1;margin-bottom:0;color:var(--y)}
+    .th-price .hrs{font-family:'Barlow Condensed',sans-serif;font-size:12px;line-height:1;margin-bottom:0;color:#fcfbfb}
+
+    .tier-card:nth-child(1) .th-price .amount{color:#F5C400}
+    .tier-card:nth-child(2) .th-price .amount{color:#F5C400}
+    .tier-card:nth-child(3) .th-price .amount{color:#F5C400}
+
+    [data-theme="dark"] .th-price .gst{color:rgba(255,255,255,.6)}
+    
+    .th-price .gst{font-family:'Share Tech Mono',monospace;font-size:11px;color:#999;display:none}
+
+    .tier-body{background:#f9f9f9;padding:16px 20px;display:flex;flex-direction:column;gap:12px;flex-grow:1}
+    .tier-body.t3b{grid-template-columns:1fr}
+    .ti{display:flex;align-items:flex-start;gap:10px;padding:0}
+    .ti-arrow{font-size:16px;flex-shrink:0;font-weight:700;margin-top:0;line-height:1;color:var(--y)}
+    .tier-card:nth-child(1) .ti-arrow{color:var(--y)}
+    .tier-card:nth-child(2) .ti-arrow{color:var(--y)}
+    .tier-card:nth-child(3) .ti-arrow{color:var(--y)}
+    
+    .ti-text{font-size:13px;color:#333;line-height:1.5}
+
+    [data-theme="dark"] .ti-text{color:#e8e8e8}
+
+
+    [data-theme="dark"] .tf-label{color:rgba(255,255,255,.6)}
+    .tier-foot{background:transparent;padding:16px 20px;display:none;flex-direction:column;gap:12px;border-top:1px solid #e0e0e0}
+
+
+    [data-theme="dark"] .tf-ideal{color:rgba(255,255,255,.6)}
+    [data-theme="dark"] .tf-chip{color:rgba(255,255,255,.6)}
+    .tf-label{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:1px;color:#999;text-transform:uppercase;flex-shrink:0;display:none}
+    .tf-chip{background:transparent;color:#999;padding:0;border-radius:0;font-size:11px;font-weight:400;letter-spacing:0;font-family:'Barlow',sans-serif;white-space:normal}
+    .tf-ideal{font-size:11px;color:#666;margin-left:0;font-style:italic;display:flex;align-items:center;gap:6px}
+    
+    .tier-register{display:none}
+
+    /* ── HARDWARE ── */
+    .hw-section{background:var(--bk);color:var(--wh)}
+    .hw-inner{padding:28px 44px;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;background:var(--bk);color:var(--wh)}
+
+    .hw-hero{padding:0;position:relative}
+    .hw-hero::after{content:'KITE H7';position:absolute;right:-8px;top:-4px;font-family:'Barlow Condensed',sans-serif;font-size:90px;font-weight:900;color:rgba(255,255,255,.025);pointer-events:none;white-space:nowrap;letter-spacing:-2px;z-index:0}
+    .hw-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(36px,5vw,52px);font-weight:900;text-transform:uppercase;line-height:.9;margin-bottom:10px;position:relative;z-index:1}
+    .hw-title span{color:var(--y);font-style:italic}
+    .hw-desc{font-size:11.5px;line-height:1.75;color:#888;margin-bottom:20px;position:relative;z-index:1}
+    .hw-desc em{color:var(--y);font-style:normal;font-weight:600}
+    .hw-section .hw-inner{background:var(--bk);color:var(--wh)}
+
+    .spec-table{width:100%;border-collapse:collapse}
+    .spec-table tr{border-bottom:1px solid #1a1a1a}
+    .spec-table tr:last-child{border-bottom:none}
+    .spec-table td{padding:9px 14px;font-size:10.5px;vertical-align:top}
+    .spec-table td:first-child{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--y);width:30%;white-space:nowrap}
+    .spec-table td:last-child{color:#bbb;line-height:1.5}
+    .spec-table tr:nth-child(odd){background:rgba(255,255,255,.02)}
+
+    .adv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:18px 44px 28px;background:var(--bk);color:var(--wh)}
+    .adv-box{background:#161616;border:1px solid #242424;border-top:2px solid var(--y);border-radius:3px;padding:14px}
+    .adv-icon{font-size:20px;margin-bottom:6px}
+    .adv-title{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:900;color:var(--y);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+    .adv-desc{font-size:9.5px;color:#666;line-height:1.5}
+
+    /* ── SCHEDULE ── */
+    .sch-section{background:transparent;color:var(--wh)}
+    .sch-inner{padding:0}
+
+    .wk-tabs{display:flex;gap:0;border-bottom:2px solid #2a2a2a;overflow-x:auto}
+    .wt{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;letter-spacing:1.5px;text-transform:uppercase;padding:10px 24px;border:none;background:none;cursor:pointer;color:#666;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:color .15s,border-color .15s}
+    .wt.on{color:var(--wh);border-bottom-color:var(--y)}
+    .wt:hover:not(.on){color:#888}
+
+    [data-theme="dark"] .wt{color:rgba(255,255,255,.4)}
+    [data-theme="dark"] .wt:hover:not(.on){color:rgba(255,255,255,.6)}
+
+    .wp{display:none;border:1px solid #2a2a2a;border-top:none}
+    .wp.on{display:grid;grid-template-columns:1fr 1fr}
+    .dc{padding:22px}
+    .dc+.dc{border-left:1px solid #2a2a2a}
+    .dh{margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #1a1a1a}
+    .dn{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:18px;text-transform:uppercase;letter-spacing:1px;color:var(--wh)}
+    .ds{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#666;margin-top:3px}
+
+    [data-theme="dark"] .ds{color:rgba(255,255,255,.5)}
+
+
+    [data-theme="dark"] .st{color:rgba(255,255,255,.5)}
+    .sr{display:grid;grid-template-columns:56px 1fr;gap:0}
+    .st{font-family:'Share Tech Mono',monospace;font-size:10px;col
+
+    [data-theme="dark"] .sn{color:rgba(255,255,255,.8)}or:#666;padding:8px 10px 8px 0;border-right:2px solid var(--y);text-align:right;line-height:1.3}
+    .sb{padding:6px 0 6px 14px;border-bottom:1px solid #1a1a1a}
+    .sn{font-size:12px;color:#bbb;font-w
+
+    [data-theme="dark"] .sg-t{color:rgba(255,255,255,.6)}eight:500;line-height:1.3}
+    .sg{display:inline-block;font-size:9px;font-family:'Share Tech Mono',monospace;padding:2px 7px;border-radius:2px;margin-top:3px;letter-spacing:.5px}
+    .sg-t{background:#1a1a1a;color:#888}
+    .sg-b{background:#1a4d1a;color:#66ff66}
+    .sg-f{background:#663300;color:#ffbb33}
+    .sg-fc{background:#662200;color:#ffaa44}
+
+    [data-theme="dark"] .sg-br{color:rgba(255,255,255,.5)}
+    .sg-l{background:#1a1a4d;color:#6699ff}
+    .sg-br{color:#666;font-style:italic;font-size:9px;padding-left:14px}
+
+    /* ── WHO + COMPARE ── */
+    .who-section{background:var(--wh);width:100%}
+    .p4-body{padding:60px 80px;display:grid;grid-template-columns:1fr;gap:28px;max-width:1300px;margin:0 auto;justify-items:center;text-align:center}
+
+    .ref-section-title{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;text-transform:uppercase;letter-spacing:1px;color:var(--bk);margin-bottom:20px;display:flex;align-items:center;gap:10px;justify-content:center}
+    .ref-section-title::before{content:'';width:18px;height:3px;background:var(--y);display:block;flex-shrink:0}
+    .why-not-title::before{background:#000}
+    .p4-body .ref-section-title{color:var(--bk)}
+    .p4-body > div > .ref-section-title{color:var(--wh)}
+
+    .audience-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .aud-card{background:var(--light);border-top:2px solid var(--y);border-radius:3px;padding:10px 12px}
+    .aud-icon{font-size:17px;margin-bottom:4px}
+    .aud-title{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:900;color:var(--bk);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
+    .aud-desc{font-size:9.5px;color:var(--muted);line-height:1.5}
+
+    .compare-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:20px;margin-left:auto;margin-right:auto}
+    .compare-table th{padding:16px 18px;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:900;letter-spacing:1px;text-transform:uppercase;background:var(--bk);color:var(--wh);text-align:center}
+    .compare-table th:first-child{background:var(--bk);color:var(--wh);width:50%;text-align:center}
+    .compare-table th:last-child{background:var(--bk);color:var(--y);text-align:center}
+    .compare-table td{padding:13px 18px;border-bottom:1px solid #333;vertical-align:middle;line-height:1.7;background:var(--bk);color:var(--wh);text-align:center}
+    .compare-table td:first-child{background:var(--bk);color:var(--wh)}
+    .compare-table td:last-child{background:var(--bk);color:var(--y);font-weight:600}
+    .bad{color:#cc3333}.good{color:#1a7a3a;font-weight:700}
+
+    /* ── LOGISTICS ── */
+    .log-table{width:100%;border-collapse:collapse;margin-top:20px;max-width:100%;background:var(--wh)}
+    .log-table tr{border-bottom:1px solid #E2E0D8}
+    .log-table tr:last-child{border-bottom:none}
+    .log-table td{padding:14px 18px;font-size:13px;vertical-align:top;line-height:1.8;background:var(--wh);color:var(--ref-text)}
+    .log-table td:first-child{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--yd);width:28%;text-transform:uppercase;font-weight:700;background:var(--wh)}
+    .log-table td:last-child{color:var(--ref-text);background:var(--wh)}
+    .log-table tr:nth-child(odd) td{background:var(--off)}
+
+    /* ── REGISTER ── */
+    .reg-wrap{background:var(--bk);display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+    .reg-left{padding:32px;background:var(--y)}
+    .rl-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(24px,3vw,32px);font-weight:900;color:var(--bk);text-transform:uppercase;letter-spacing:1px;line-height:.9;margin-bottom:16px}
+    .rl-title span{display:block;font-size:16px;font-weight:700;opacity:.55;margin-bottom:4px}
+
+    .tier-prices{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+    .tp-row{background:rgba(0,0,0,.1);border-radius:3px;padding:8px 14px;display:flex;align-items:center;justify-content:space-between}
+    .tp-name{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:900;color:var(--bk);text-transform:uppercase}
+    .tp-price{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;color:var(--bk)}
+    .tp-price small{font-size:10px;font-weight:500;opacity:.5}
+
+    .seats-box{background:rgba(0,0,0,.1);border-radius:3px;padding:14px;margin-top:4px}
+    .sb-title{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(0,0,0,.5);text-transform:uppercase;margin-bottom:10px}
+    .sb-row{display:flex;justify-content:space-between;font-size:11px;color:var(--bk);margin-bottom:4px;font-weight:500}
+    .sb-count{font-family:'Share Tech Mono',monospace;font-size:10px;font-weight:700}
+    .sb-track{height:3px;background:rgba(0,0,0,.15);border-radius:2px;margin-bottom:10px;overflow:hidden}
+    .sb-fill{height:100%;background:var(--bk);border-radius:2px;transition:width 1.4s ease}
+
+    .reg-right{padding:32px}
+    .rr-title{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:900;letter-spacing:2px;color:var(--y);text-transform:uppercase;margin-bottom:20px}
+
+    .rform-group{margin-bottom:14px}
+    .rform-label{display:block;font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;margin-bottom:6px}
+
+    [data-theme="dark"] .rform-label{color:rgba(255,255,255,.7)}
+    .rform-input,.rform-select{width:100%;background:#161616;border:1px solid #2a2a2a;color:var(--wh);font-family:'Barlow',sans-serif;font-size:13px;padding:10px 13px;outline:none;transition:border-color .2s;border-radius:2px;appearance:none;-webkit-appearance:none}
+    .rform-input:focus,.rform-select:focus{border-color:var(--y)}
+    .rform-input::placeholder{color:#444}
+    .rform-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23666' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;background-color:#161616;padding-right:34px;cursor:pointer}
+    .rform-select option{background:#1a1a1a;color:var(--wh)}
+    .rform-row-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .rform-submit{width:100%;background:var(--y);color:var(--bk);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:18px;letter-spacing:2px;text-transform:uppercase;padding:13px;border:none;cursor:pointer;margin-top:6px;border-radius:2px;transition:background .2s}
+    .rform-submit:hover{background:var(--yd)}
+    .rform-note{font-family:'Share Tech Mono',monospace;font-size:9px;color:#444;text-align:center;margin-top:8px;letter-spacing:1px}
+
+
+    [data-theme="dark"] .rr-c{color:rgba(255,255,255,.7)}
+    [data-theme="dark"] .rform-note{color:rgba(255,255,255,.5)}
+
+
+
+    [data-theme="dark"] .rr-about{color:rgba(255,255,255,.6)}
+    [data-theme="dark"] .rr-c .val{color:rgba(255,255,255,.8)}
+    .rr-contacts{display:flex;flex-direction:column;gap:7px;margin-bottom:16px;border-top:1px solid #2a2a2a;padding-top:14px;margin-top:14px}
+    .rr-c{display:flex;align-items:center;gap:8px;font-size:11px;color:#888}
+
+    [data-theme="dark"] .rr-about strong{color:rgba(255,255,255,.8)}
+    .rr-c .icon{font-size:13px;flex-shrink:0}
+    .rr-c .val{font-family:'Share Tech Mono',monospace;font-size:10px;color:#bbb}
+    .rr-about{font-size:9px;color:#555;line-height:1.6;border-top:1px solid #1e1e1e;padding-top:10px;margin-top:10px}
+    .rr-about strong{color:#888;display:block;margin-bottom:3px;font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:1px;text-transform:uppercase}
+
+    /* REVEAL ANIMATION */
+    .rev{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+    .rev.vis{opacity:1;transform:translateY(0)}
+
+    /* RESPONSIVE */
+    @media(max-width:860px){
+      .sec-topbar,.sec-topbar-y,.adv-grid,.sch-inner,.hw-inner,.p4-body{padding-left:20px;padding-right:20px}
+      .hero{padding:20px 20px 60px 20px}
+
+      .tiers-inner{padding-left:20px;padding-right:20px;grid-template-columns:1fr}
+      .tier-body,.tier-body.t3b{grid-template-columns:1fr}
+      .hw-inner,.p4-body{grid-template-columns:1fr}
+      .wp.on{grid-template-columns:1fr}
+      .dc+.dc{border-left:none;border-top:1px solid var(--border)}
+      .adv-grid{grid-template-columns:1fr}
+      .reg-wrap{grid-template-columns:1fr}
+      .rform-row-2{grid-template-columns:1fr}
+      .audience-grid{grid-template-columns:1fr}
+      .format-grid{grid-template-columns:1fr !important;gap:16px}
+      .rtb-grid{display:flex !important;flex-direction:column;gap:40px}
+      .rtb-grid > div:first-child{order:1}
+      .rtb-grid > div:last-child{order:2}
+      .rtb-buttons{display:flex !important;justify-content:center;margin-bottom:24px}
+      .rtb-buttons a{width:fit-content;display:inline-flex;margin-bottom:0}
+      .rtb-qr-wrapper{display:flex !important;justify-content:center;align-items:center;flex-direction:column;margin-top:0;gap:24px}
+      .rtb-grid > div:first-child > div:last-child{order:3;width:100%;margin-top:24px;padding-top:24px;border-top:1px solid #333333 !important}
+      .ready-build-section{padding:60px 20px}
+      .stb-title{font-size:13px}
+      .hero-cta-btn{font-size:13px;padding:12px 24px}
+      .hero-tagline{max-width:100%;line-height:1.5}
+
+      .hero-title .l2{font-size:clamp(2.3rem,7vw,3.5rem);font-weight:900;letter-spacing:0.15em;white-space:nowrap;text-shadow:0px 2px 4px rgba(0,0,0,0.3)}
+      .hero-title .l6{letter-spacing:0.18em;word-spacing:0.22em;white-space:nowrap; margin-left: 1%;}
+      .hero-logo{flex:1;display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-start;gap:6px}
+      .hero-logo-text{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:900;letter-spacing:0.5px;text-transform:uppercase;color:#0F0F0F;line-height:1.2;text-align:right;margin-bottom:6px}
+      .hero-logo img{height:45px;object-fit:contain}
+      .venue-strip{flex-direction:row !important;padding:16px 20px !important;flex-wrap:wrap;gap:12px}
+      .venue-strip > div:first-child{order:2;width:100%;justify-content:center;text-align:center;font-size:11px !important;margin-top:8px;letter-spacing:1px}
+      .venue-strip > div:last-child{order:1;width:100%;display:flex !important;align-items:flex-start !important;justify-content:flex-start !important;gap:8px !important;flex-wrap:nowrap !important;margin-bottom:0 !important}
+      .venue-strip > div:last-child > div:first-child{flex:1;font-size:10px !important;letter-spacing:0.5px;line-height:1.4}
+      .venue-strip > div:last-child > div:first-child span:first-child{font-size:18px;display:inline}
+      .venue-strip > div:last-child > div:first-child span:first-child::after{content:" ";margin-right:2px}
+      .venue-strip > div:last-child > div:last-child{flex-shrink:0}
+      .venue-strip > div:last-child > div:last-child img{height:50px !important}
+      .p4-body{padding:20px 20px;max-width:100%}
+      .compare-table{font-size:14px}
+      .compare-table th{padding:10px 12px;font-size:12px}
+      .compare-table td{padding:8px 12px}
+      .log-table td{padding:9px 12px;font-size:14px}
+      .why-not-title{font-size:20px}
+    }
+
+    /* ── Dark Mode Text Visibility Fixes (Mobile & Desktop) ── */
+    [data-theme="dark"] .hf-left{color:rgba(255,255,255,.7)}
+    [data-theme="dark"] .hf-right{color:rgba(255,255,255,.6)}
+    [data-theme="dark"] .tf-label{color:rgba(255,255,255,.6)}
+    [data-theme="dark"] .rform-input::placeholder{color:rgba(255,255,255,.4)}
+    </style>
+</head>
+<body>
+
+<!-- Yellow Strip -->
+<div class="yellow-strip">&lt;&lt; Smart Tech for Your Next Build &gt;&gt;</div>
+
+<!-- Header -->
+<header>
+    <div class="header-container">
+        <a class="logo" href="index.html" style="display: flex; align-items: center; gap: 0.5rem;">
+            <img id="siteLogo" src="assets/edited/Kitronix.png" alt="Kite H7 Logo" style="height: 72px; width: 72px; object-fit: contain;">
+        </a>
+        <nav id="mainNavWorkshop">
+            <a href="index.html#overview">Home</a>
+            <a href="product.html">Purchase</a>
+            <a href="kitronix-workshop.html">Workshop</a>
+            <a href="index.html#support">Support</a>
+            <a href="index.html#specs">About</a>
+        </nav>
+        <div class="header-actions-right">
+            <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle dark/light mode">
+                <span class="material-symbols-outlined" id="themeToggleIcon">dark_mode</span>
+            </button>
+            <button class="icon-btn mobile-menu-btn" id="mobileMenuBtnWorkshop">
+                <span class="material-symbols-outlined" style="font-size: 20px;">menu</span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- ═══════════ HERO ═══════════ -->
+<div class="hero" id="top">
+ <div class="hero-inner" style="display: flex; align-items: flex-start; justify-content: space-between; gap: 60px;">
+    
+    <!-- Left side — ADVANCE DRONE content + BUILD section -->
+    <div class="hero-title">
+      <span class="l2" style="font-style: normal; color: #0F0F0F;">ADVANCE DRONE</span>
+      <span class="l2" style="font-style: normal; color: #FFFFFF; width: fit-content; display: inline-block;">AUTOPILOT</span>
+      <span class="l2" style="font-style: normal; color: #0F0F0F; display: block;">KITE H7 WORKSHOP</span>
+      
+      <!-- BUILD • TUNE • ENGINEER and tagline -->
+      <div style="margin-top: 24px;">
+        <div style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #0F0F0F; font-weight: 700; margin-bottom: 12px;">BUILD • TUNE • ENGINEER</div>
+        <p class="hero-tagline" style="font-size: 15px; font-family: Georgia ; color: #0F0F0F; line-height: 1.6; max-width: 400px; margin: 0;">From drone subsystems to embedded flight control system engineering <br> — hands-on with real hardware</p>
+      </div>
+    </div>
+
+    <!-- Right side — DEEP TECH text + logo -->
+    <div class="hero-logo">
+      <div class="hero-logo-text" style="opacity: 80%;">
+        <span style="font-size: 2em;">DEEP TECH WORKSHOP</span><br>
+        <span style="font-size: 2em;">HARDWARE POWERED BY</span>
+      </div>
+      <img src="assets/edited/logo1.jpeg" alt="Daloft logo">
+    </div>
+
+</div>
+
+    <!-- CTA Buttons -->
+    <div class="hero-cta-buttons" style="justify-content: center; margin-top: 32px; margin-left: 0;">
+      <a href="https://wa.me/917200275179?text=Have%20questions%3F%20Get%20expert%20support%20throughout%20the%20workshop." target="_blank" class="hero-cta-btn hero-contact-btn">
+          Contact Us
+        </a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfp_VA4SfrVzxtgOk47ykCc1ITO9MasZ5jdmla_WrinbU3pGg/viewform?usp=preview" class="hero-cta-btn hero-register-btn">Register Now</a>
+    </div>
+</div>
+<!-- ═══════════ VENUE STRIP ═══════════ -->
+<div class="venue-strip" style="background: #0F0F0F; padding: 28px 44px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+
+    <!-- Left — Contact -->
+    <div style="font-family: 'Share Tech Mono', monospace; font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #F5C400;">
+        CONTACT US : <span style="color: #ffffff;">+91 9790755179</span>
+    </div>
+
+    <!-- Right — Venue and Logo Combined -->
+    <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+        <div style="display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start; font-family: 'Share Tech Mono', monospace; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #ffffff;">
+            <span style="font-size: 20px;">📍Venue: </span>
+            <div style="display: flex; flex-direction: column; gap: 2px;">
+                <span>IIT Madras Research Park,</span>
+                <span>Tharamani, Chennai-600113</span>
+            </div>
+        </div>
+        <div style="flex-shrink: 0;">
+            <img src="assets/edited/wlogo.png" alt="IITM Research Park" style="height: 80px; object-fit: contain;">
+        </div>
+    </div>
+
+</div>
+
+
+<!-- ═══════════ WORKSHOP TIERS ═══════════ -->
+
+<div id="tiers"> 
+    <div class="sec-topbar-y" style="background-color: #F5C400; justify-content: center;">
+    <div class="stb-title dark" style="color: #000;">Program Overview — Choose your Course</div>
+  </div>
+  </div>
+</div>
+
+  <div class="tiers-section">
+    <div class="tiers-inner rev">
+
+      <!-- TIER 1 -->
+      <div class="tier-card">
+        <div class="tier-head">
+          <div class="th-left">
+            <div class="th-name" style="color:var(--y)">FLIGHT CONTROL FUNDAMENTALS</div>
+          </div>
+          <div class="th-price">
+            <div class="amount">₹4,900</div>
+            <div class="hrs">Total 20hrs | 4 Weekend Sessions<br>4hrs/session + 8hrs Field Test</div>
+          </div>
+        </div>
+        <div class="tier-body">
+          <div class="ti"><div class="ti-arrow">→</div><div class="ti-text">Sensor Calibration – Calibrating accelerometer, gyroscope, magnetometer, RC, and ESC for stable flight performance</div></div>
+          <div class="ti"><div class="ti-arrow">→</div><div class="ti-text">Pre-Flight Setup & Safety - Essential safety checks, arming procedures, flight modes, and failsafe configurations.</div></div>
+          <div class="ti"><div class="ti-arrow">→</div><div class="ti-text">PID Control Fundamentals - Basic understanding of P, I, D control loops and cascaded attitude-rate control structure.</div></div>
+          <div class="ti"><div class="ti-arrow">→</div><div class="ti-text">Flight Testing & Logging - Conducting test flights, enabling logs, and analyzing flight data for debugging.</div></div>
+          <div class="ti"><div class="ti-arrow">→</div><div class="ti-text">Ground Control Station Setup - Connecting and configuring Mission Planner or QGroundControl for parameter setup and monitoring.</div></div>
+        </div>
+      </div>
+
+      <!-- TIER 2 -->
+      <div class="tier-card">
+        <div class="tier-head">
+          <div class="th-left">
+
+            <div class="th-name" style="color:var(--y)">ADVANCED FLIGHT CONTROL SYSTEMS</div>
+          </div>
+          <div class="th-price">
+            <div class="amount">₹7,499</div>
+            <div class="hrs">Total 26hrs | 4 Weekend Sessions<br>8hrs/session + 8hrs Field Test</div>
+          </div>
+        </div>
+        <div class="tier-body">
+          <div class="ti"><div class="ti-arrow">→</div><div class="ti-text">Optical Flow Sensor Fundamentals - Working principle of optical flow, velocity estimation, and its role in position hold without GPS.</div></div>
+          <div class="ti"><div class="ti-arrow">→</div><div class="ti-text">Lidar Altimeter Integration - Using lidar for precise altitude measurement, sensor placement, and configuration for stable height hold.</div></div>
+          <div class="ti"><div class="ti-arrow">→</div><div class="ti-text">Sensor Integration with Flight Controller - Connecting and configuring optical flow, lidar altimeter, and 360 lidar with the flight controller.</div></div>
+          <div class="ti"><div class="ti-arrow">→</div><div class="ti-text">Indoor Navigation Setup - Combining optical flow and lidar for controlled indoor flight and navigation.</div></div>
+          <div class="ti"><div class="ti-arrow">→</div><div class="ti-text">Ground Control Configuration for Advanced Sensors - Parameter setup and calibration workflows for optical flow and lidar-based systems.</div></div>
+
+        </div>
+      </div>
+
+      <!-- TIER 3 -->
+      <div class="tier-card">
+        <div class="tier-head t3h">
+          <div class="th-left">
+
+            <div class="th-name" style="color:var(--y)">FLIGHT CONTROL FIRMWARE</div>
+          </div>
+          <div class="th-price">
+            <div class="amount">₹25,900</div>
+            <div class="hrs">Total 30hrs | 5 Weekends<br>6hrs/session + 18hrs Field Test</div>
+          </div>
+        </div>
+        <div class="tier-body">
+          <div class="ti"><div class="ti-arrow">→</div><div class="ti-text">Real-time flight system design — understanding control loops & scheduling (KITE H7 reference)</div></div>
+          <div class="ti"><div class="ti-arrow">→</div><div class="ti-text">ARM-based microcontroller architecture for flight control systems (STM32 Cortex-M)</div></div>
+          <div class="ti"><div class="ti-arrow">→</div><div class="ti-text">Custom sensor driver development — SPI/I2C with DMA, interrupts & latency optimization</div></div>
+          <div class="ti"><div class="ti-arrow">→</div><div class="ti-text">Complementary filter implementation – real-time attitude estimation from gyro + accelerometer</div></div>
+          <div class="ti"><div class="ti-arrow">→</div><div class="ti-text">IMU PCB design – schematic &amp; layout for sensor integration and optimal performance</div></div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<!-- ═══════════ WHO + COMPARE ═══════════ -->
+
+
+  <div class="hw-section">
+    <div style="background-color: var(--y); padding: 24px 44px; display: flex; align-items: center; justify-content: center;">
+      <div class="ref-section-title why-not-title" style="color: var(--bk); margin-bottom: 0;">WHY <span style="color:#FFFFFF;">CHOOSE</span> THIS WORKSHOP ?</div>
+    </div>
+    <div class="sch-inner rev">
+      <div class="p4-body rev" style="background:var(--bk);padding:40px;margin-bottom:0">
+    <div style="background:var(--bk);border-radius:0;overflow:hidden;padding:0;width:100%;max-width:900px;margin:0 auto">
+      <table class="compare-table">
+        <tr><th>GENERIC WORKSHOPS</th><th>KITE H7 WORKSHOP</th></tr>
+        <tr><td><span class="bad">✗</span> Basic flight operation</td><td><span class="good">✓</span> Deep focus on flight dynamics</td></tr>
+        <tr><td><span class="bad">✗</span> Pre - build hardware</td><td><span class="good">✓</span> Inhouse hardware: KITE H7 Flight Controller</td></tr>
+        <tr><td><span class="bad">✗</span> Limited hardware understanding</td><td><span class="good">✓</span> implementation of dual IMU sensor fusion with real-time data analysis</td></tr>
+        <tr><td><span class="bad">✗</span> Generic simulators</td><td><span class="good">✓</span> Actual PX4/ArduPilot architecture</td></tr>
+        <tr><td><span class="bad">✗</span> No firmware architecture exposure</td><td><span class="good">✓</span> Firmware development &amp; sensor driver implementation</td></tr>
+        <tr><td><span class="bad">✗</span> No external peripheral integration</td><td><span class="good">✓</span> External peripherals integration (e.g., LiDAR, flow sensor)</td></tr>
+      </table>
+    </div>
+    </div>
+
+    <!-- Ready to Build CTA -->
+    <div style="background:var(--bk);padding:40px;text-align:center;border-top:1px solid #242424;margin-top:0">
+      <div style="margin-bottom:12px">
+        <p style="color:var(--wh);font-size:18px;font-weight:600;margin:0;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px">Do you want to build real drone system?</p>
+
+      </div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfp_VA4SfrVzxtgOk47ykCc1ITO9MasZ5jdmla_WrinbU3pGg/viewform?usp=preview" style="background:var(--y);color:var(--bk);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:16px;letter-spacing:2px;text-transform:uppercase;padding:14px 32px;border:none;border-radius:3px;text-decoration:none;cursor:pointer;display:inline-block;transition:all 0.3s ease;box-shadow:0 4px 12px rgba(0,0,0,0.1)" onmouseover="this.style.background='var(--yd)';this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 16px rgba(0,0,0,0.15)'" onmouseout="this.style.background='var(--y)';this.style.transform='translateY(0)';this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'">Register Now</a>
+    </div>
+    </div>
+  </div>
+
+  <!-- Format & Logistics Section -->
+
+  <div style="background:var(--wh);padding:60px 44px">
+    <div style="max-width:1300px;margin:0 auto">
+      <div class="ref-section-title" style="color: var(--bk); margin-bottom: 40px;">WORKSHOP FORMAT</div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px" class="format-grid">
+        <!-- DURATION -->
+        <div style="background:#E8E8E0;border-radius:4px;padding:24px;display:flex;flex-direction:column;justify-content:flex-start">
+          <div style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#0F0F0F;font-weight:700;margin-bottom:12px">DURATION</div>
+          <div style="font-family:'Barlow',sans-serif;font-size:14px;color:#0F0F0F;line-height:1.7">
+            Tier 1: 4 Weekend Sessions · 4 Sessions · 20 hrs<br>
+            Tier 2: 4 Weekend Sessions · 4 Sessions · 26 hrs<br>
+            Tier 3: 5 Weekend Sessions · 5 Sessions · 30 hrs
+          </div>
+        </div>
+        
+        <!-- BATCH MODEL -->
+        <div style="background:#E8E8E0;border-radius:4px;padding:24px;display:flex;flex-direction:column;justify-content:flex-start">
+          <div style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#0F0F0F;font-weight:700;margin-bottom:12px">BATCH MODEL</div>
+          <div style="font-family:'Barlow',sans-serif;font-size:14px;color:#0F0F0F;line-height:1.7">
+            5 - 6 Members Per Team [Guaranteed Individual Attention]
+          </div>
+        </div>
+        
+        <!-- LOCATION -->
+        <div style="background:#E8E8E0;border-radius:4px;padding:24px;display:flex;flex-direction:column;justify-content:flex-start">
+          <div style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#0F0F0F;font-weight:700;margin-bottom:12px">LOCATION</div>
+          <div style="font-family:'Barlow',sans-serif;font-size:14px;color:#0F0F0F;line-height:1.7">
+            IIT Madras Research Park, Chennai, Tamil Nadu
+          </div>
+        </div>
+        
+        <!-- HANDS ON TOOLS -->
+        <div style="background:#E8E8E0;border-radius:4px;padding:24px;display:flex;flex-direction:column;justify-content:flex-start">
+          <div style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#0F0F0F;font-weight:700;margin-bottom:12px">HANDS ON TOOLS</div>
+          <div style="font-family:'Barlow',sans-serif;font-size:14px;color:#0F0F0F;line-height:1.7">
+            LiDAR, Optical Flow, Kite H7 Flight Controller, Complete Drone Kits, Embedded C IDE and GCS integration
+          </div>
+        </div>
+        
+        <!-- LAPTOP -->
+        <div style="background:#E8E8E0;border-radius:4px;padding:24px;display:flex;flex-direction:column;justify-content:flex-start">
+          <div style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#0F0F0F;font-weight:700;margin-bottom:12px">LAPTOP</div>
+          <div style="font-family:'Barlow',sans-serif;font-size:14px;color:#0F0F0F;line-height:1.7">
+            Bring your own<br>(Windows / Linux / Mac supported)
+          </div>
+        </div>
+        
+        <!-- CERTIFICATE -->
+        <div style="background:#E8E8E0;border-radius:4px;padding:24px;display:flex;flex-direction:column;justify-content:flex-start">
+          <div style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#0F0F0F;font-weight:700;margin-bottom:12px">CERTIFICATE</div>
+          <div style="font-family:'Barlow',sans-serif;font-size:14px;color:#0F0F0F;line-height:1.7">
+            Digitally signed – Kitronix
+          </div>
+        </div>
+        
+        <!-- GROUP DEAL -->
+        <div style="background:#E8E8E0;border-radius:4px;padding:24px;display:flex;flex-direction:column;justify-content:flex-start">
+          <div style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#0F0F0F;font-weight:700;margin-bottom:12px">GROUP DEAL</div>
+          <div style="font-family:'Barlow',sans-serif;font-size:14px;color:#0F0F0F;line-height:1.7">
+            Group of 5 participants get 10% off
+          </div>
+        </div>
+        
+        <!-- PREREQUISITES -->
+        <div style="background:#E8E8E0;border-radius:4px;padding:24px;display:flex;flex-direction:column;justify-content:flex-start">
+          <div style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#0F0F0F;font-weight:700;margin-bottom:12px">PREREQUISITES</div>
+          <div style="font-family:'Barlow',sans-serif;font-size:14px;color:#0F0F0F;line-height:1.7">
+            Autopilot · SLAM · Obstacle Avoidance · Flight Controller Firmware
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+     
+<!-- ═══════════ READY TO BUILD SECTION ═══════════ -->
+<div style="background:#0F0F0F;padding:80px 44px;position:relative;overflow:hidden" class="ready-build-section">
+  
+  
+  <div style="max-width:1300px;margin:0 auto;position:relative;z-index:1">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center" class="rtb-grid">
+      <!-- LEFT CONTENT -->
+      <div>
+        <h2 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.5rem,5vw,3.5rem);font-weight:900;text-transform:uppercase;color:#FFFFFF;line-height:0.9;margin-bottom:20px;letter-spacing:-1px">READY TO BUILD<br><span style="color:#F5C400">REAL DRONE</span><br>SYSTEMS?</h2>
+        
+        <p style="font-family:'Barlow',sans-serif;font-size:15px;color:#CCCCCC;line-height:1.8;margin-bottom:32px;max-width:500px">Join India's most technical drone workshop. Hands-on with real KITE H7 FC at IIT Madras Research Park. Limited seats per batch – don't miss out.</p>
+        
+        <div style="display:flex;gap:16px;margin-bottom:16px" class="rtb-buttons">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfp_VA4SfrVzxtgOk47ykCc1ITO9MasZ5jdmla_WrinbU3pGg/viewform?usp=preview" style="background:#F5C400;color:#0F0F0F;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:14px;letter-spacing:2px;text-transform:uppercase;padding:14px 32px;border:none;border-radius:3px;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all 0.3s ease;box-shadow:0 4px 12px rgba(245,196,0,0.3)" onmouseover="this.style.background='#C89A00';this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 16px rgba(245,196,0,0.4)'" onmouseout="this.style.background='#F5C400';this.style.transform='translateY(0)';this.style.boxShadow='0 4px 12px rgba(245,196,0,0.3)'">
+            <span style="font-size:18px">→</span> REGISTER NOW
+          </a>
+        </div>
+        
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px;padding-top:24px;border-top:1px solid #333333">
+          <div>
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#888888;margin-bottom:8px">LOCATION</div>
+            <div style="color:#CCCCCC;font-family:'Barlow',sans-serif;font-size:14px"><span style="font-size: 20px;">📍</span>IIT Madras Research Park, Chennai</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- RIGHT QR CODE -->
+      <div style="display:flex;flex-direction:column;gap:32px;align-items:center;justify-content:center" class="rtb-qr-wrapper">
+        <!-- QR - REGISTER -->
+        <div style="background:#F5C400;padding:20px;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,0.3)">
+          <div style="background:#FFFFFF;padding:16px;border-radius:4px;width:200px;height:200px;display:flex;align-items:center;justify-content:center;overflow:hidden">
+            <img src="assets/edited/QR1.png" alt="Register QR Code" style="width:100%;height:100%;object-fit:contain">
+          </div>
+          <div style="text-align:center;margin-top:12px">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#0F0F0F;font-weight:700">REGISTER NOW</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="index.html#overview">Overview</a></li>
+                    <li><a href="index.html#specs">Specifications</a></li>
+                    <li><a href="kitronix-workshop.html">Gallery</a></li>
+                    <li><a href="product.html">Purchase</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="index.html#support">Documentation</a></li>
+                    <li><a href="index.html#support">Firmware</a></li>
+                    <li><a href="index.html#support">Community Forum</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Kite H7. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Schedule tab switcher
+    function sw(i, btn) {
+      for (let j = 0; j < 4; j++) document.getElementById('wp' + j).classList.toggle('on', j === i);
+      document.querySelectorAll('.wt').forEach((b, j) => b.classList.toggle('on', j === i));
+    }
+
+    // Scroll reveal animation
+    const obs = new IntersectionObserver(es => { es.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis') }) }, { threshold: 0.06 });
+    document.querySelectorAll('.rev').forEach(el => obs.observe(el));
+
+    // Animate seat fill bars
+    setTimeout(() => {
+      document.getElementById('sf1').style.width = '30%';
+      document.getElementById('sf2').style.width = '60%';
+      document.getElementById('sf3').style.width = '75%';
+    }, 600);
+
+    // Registration handler
+    function handleReg(btn) {
+      btn.textContent = 'Submitted — We\'ll Be In Touch!';
+      btn.style.background = '#1a7a3a';
+      btn.style.color = '#fff';
+      btn.disabled = true;
+    }
+
+    // Mobile menu toggle for workshop page
+    const mobileMenuBtnWorkshop = document.getElementById('mobileMenuBtnWorkshop');
+    const mainNavWorkshop = document.getElementById('mainNavWorkshop');
+    
+    if (mobileMenuBtnWorkshop) {
+        mobileMenuBtnWorkshop.addEventListener('click', () => {
+            mainNavWorkshop.classList.toggle('active');
+            const icon = mobileMenuBtnWorkshop.querySelector('.material-symbols-outlined');
+            icon.textContent = mainNavWorkshop.classList.contains('active') ? 'close' : 'menu';
+        });
+    }
+
+    // Close mobile menu when clicking nav links
+    const navLinksWorkshop = mainNavWorkshop.querySelectorAll('a');
+    navLinksWorkshop.forEach(link => {
+        link.addEventListener('click', () => {
+            mainNavWorkshop.classList.remove('active');
+            const icon = mobileMenuBtnWorkshop.querySelector('.material-symbols-outlined');
+            icon.textContent = 'menu';
+        });
+    });
+
+    // Theme toggle functionality
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const themeToggleIcon = document.getElementById('themeToggleIcon');
+    const siteLogo = document.getElementById('siteLogo');
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('kitronix-theme', newTheme);
+            themeToggleIcon.textContent = newTheme === 'dark' ? 'light_mode' : 'dark_mode';
+            if (siteLogo) {
+                siteLogo.src = newTheme === 'dark' ? 'assets/edited/Logo2.png' : 'assets/edited/Kitronix.png';
+            }
+        });
+    }
+
+    // Mobile navbar scroll behavior
+    let lastScrollTop = 0;
+    const header = document.querySelector('header');
+
+    function handleScroll() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop > lastScrollTop) {
+            header.classList.remove('mobile-visible');
+        } else {
+            header.classList.add('mobile-visible');
+        }
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    }
+
+    function checkMobile() {
+        if (window.innerWidth <= 1024) {
+            window.addEventListener('scroll', handleScroll);
+            handleScroll();
+        } else {
+            window.removeEventListener('scroll', handleScroll);
+            header.classList.remove('mobile-visible');
+        }
+    }
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    // Smooth scroll behavior for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+</script>
+</body>
+</html>
