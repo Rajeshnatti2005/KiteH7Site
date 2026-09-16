@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Kitronix - Product Gallery & Workshop</title>
+    <title>Kite H7 - Product Gallery & Workshop</title>
     <link href="https://fonts.googleapis.com" rel="preconnect"/>
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700;1,900&family=Barlow:wght@300;400;500;600;700&family=Share+Tech+Mono&family=Bebas+Neue&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     <link href="kit_styles.css" rel="stylesheet"/>
-    <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('kitronix-theme') || 'light');</script>
+    <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('Kite H7-theme') || 'light');</script>
 
     <style>
     /* ── REFERENCE STYLES (scoped to workshop page) ── */
@@ -524,12 +524,12 @@
 <header>
     <div class="header-container">
         <a class="logo" href="index.html" style="display: flex; align-items: center; gap: 0.5rem;">
-            <img id="siteLogo" src="assets/edited/Kitronix.png" alt="Kite H7 Logo" style="height: 72px; width: 72px; object-fit: contain;">
+            <img id="siteLogo" src="assets/edited/Kite H7.png" alt="Kite H7 Logo" style="height: 72px; width: 72px; object-fit: contain;">
         </a>
         <nav id="mainNavWorkshop">
             <a href="index.html#overview">Home</a>
             <a href="product.html">Purchase</a>
-            <a href="kitronix-workshop.html">Workshop</a>
+            <a href="Kite H7-workshop.html">Workshop</a>
             <a href="index.html#support">Support</a>
             <a href="index.html#specs">About</a>
         </nav>
@@ -769,7 +769,7 @@
         <div style="background:#E8E8E0;border-radius:4px;padding:24px;display:flex;flex-direction:column;justify-content:flex-start">
           <div style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#0F0F0F;font-weight:700;margin-bottom:12px">CERTIFICATE</div>
           <div style="font-family:'Barlow',sans-serif;font-size:14px;color:#0F0F0F;line-height:1.7">
-            Digitally signed – Kitronix
+            Digitally signed – Kite H7
           </div>
         </div>
         
@@ -843,7 +843,7 @@
                 <ul>
                     <li><a href="index.html#overview">Overview</a></li>
                     <li><a href="index.html#specs">Specifications</a></li>
-                    <li><a href="kitronix-workshop.html">Gallery</a></li>
+                    <li><a href="Kite H7-workshop.html">Gallery</a></li>
                     <li><a href="product.html">Purchase</a></li>
                 </ul>
             </div>
@@ -930,10 +930,10 @@
             const currentTheme = document.documentElement.getAttribute('data-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
             document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('kitronix-theme', newTheme);
+            localStorage.setItem('Kite H7-theme', newTheme);
             themeToggleIcon.textContent = newTheme === 'dark' ? 'light_mode' : 'dark_mode';
             if (siteLogo) {
-                siteLogo.src = newTheme === 'dark' ? 'assets/edited/Logo2.png' : 'assets/edited/Kitronix.png';
+                siteLogo.src = newTheme === 'dark' ? 'assets/edited/Logo2.png' : 'assets/edited/Kite H7.png';
             }
         });
     }
